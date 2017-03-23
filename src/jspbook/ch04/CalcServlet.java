@@ -24,7 +24,6 @@ public class CalcServlet extends HttpServlet {
 		// 변수 선언
 		double num1, num2;
 		double result;
-		String strResult;
 		String op;
 		
 		// 클라이언트 응답시 전달될 컨텐트에 대한 mime type과 캐릿터셋 지정
@@ -39,17 +38,15 @@ public class CalcServlet extends HttpServlet {
 		op = req. getParameter("operator");
 		// ccalc() 메서드 호출로 결과를 받아 온다.
 		result = calc(num1, num2, op);
-		
-		int n1 = (int)num1;
-		int n2 = (int)num2;
-		
+
+	
 		// 출력 스트림을 통해 화면을 구성한다.
 		out.println("<HTML>");
 		out.println("<HEAD><TITLE>계산기</TITLE></HEAD>");
 		out.println("<BODY><center>");
 		out.println("<H2>계산결과</H2>");
 		out.println("<HR>");
-		out.println(n1+" "+op+" "+n2+" = "+result);
+		out.println(num1+" "+op+" "+num2+" = "+result);
 		out.println("</center></BODY></HTML>");
 	}
 
