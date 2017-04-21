@@ -9,6 +9,9 @@ public class LoginBean {
 	private String secret;
 
 	
+	final String _userid = "BinSin";
+	final String _passwd = "123456";
+	final String _pnumber = "010-1234-5678";
 
 	
 	public String getUserid() {
