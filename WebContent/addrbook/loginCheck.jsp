@@ -15,7 +15,7 @@
 %>
 		<script>
 			alert("로그인 되었습니다.");
-			location.href = "addrbook_form.jsp";
+			location.href = "index.jsp";
 		</script>
 <%
 	} else {

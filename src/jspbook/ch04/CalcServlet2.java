@@ -29,11 +29,11 @@ public class CalcServlet2 extends HttpServlet {
 		
 		res.setContentType("text/html; charset=UTF-8");
 		
-		PrintWriter out = res.getWriter();
+		PrintWriter out = res.getWriter(); 
 		
 		
 		num1 = Double.parseDouble(req.getParameter("num1"));
-		num2 = Double.parseDouble(req.getParameter("num1"));
+		num2 = Double.parseDouble(req.getParameter("num2"));
 		op = req.getParameter("operator");
 		
 		

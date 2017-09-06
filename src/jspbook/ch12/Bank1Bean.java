@@ -85,7 +85,7 @@ public class Bank1Bean {
 			pstmt.executeUpdate();
 			
 			stmt = conn.createStatement();
-			ResultSet rs = stmt.executeQuery("select balance from " + fromBank +  " where aid=101");
+			ResultSet rs = stmt.executeQuery("select balance from " + fromBank);
 			rs.next();
 			int left = rs.getInt(1);
 			

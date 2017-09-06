@@ -14,7 +14,7 @@
 %>
 	<script>
 			location.href = "addrbook_list.jsp";
-	</script>
+	</script> 
 <%
 	}
 	else {

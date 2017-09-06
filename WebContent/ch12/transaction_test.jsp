@@ -8,33 +8,37 @@
 <jsp:useBean scope="page" id="bb4" class="jspbook.ch12.Bank4Bean" />
 
 <%
+try {
 	if(request.getMethod().equals("POST")) {
-		String fromBank = request.getParameter("Bank1");
-		String toBank = request.getParameter("Bank2");
+		String fromBank = request.getParameter("fromBank");
+		String toBank = request.getParameter("toBank");
 		
-		String str = fromBank.substring(4);
-		
+		if(Integer.parseInt(request.getParameter("bal")) < 0) {
+			out.println("<script>alert('0보다 큰 값을 입력하세요')</script>");
+			out.println("<script>history.go(-1)</script>");
+		}
+			
 		if(fromBank.equals(toBank))	out.println("<script>alert('다른 bank에 이체하세요.')</script>");
 		else {
-			if(str.equals("1")) {
+			if(fromBank.equals("Bank1")) {
 				if(bb1.transfer(Integer.parseInt(request.getParameter("bal")), fromBank, toBank))
 				out.println("<script>alert('정상처리 되었습니다.')</script>");
 				else
 				out.println("<script>alert('수용한도를 초과했습니다.')</script>");
 			}
-			else if(str.equals("2")) {
+			else if(fromBank.equals("Bank2")) {
 				if(bb2.transfer(Integer.parseInt(request.getParameter("bal")), fromBank, toBank))
 					out.println("<script>alert('정상처리 되었습니다.')</script>");
 					else
 					out.println("<script>alert('수용한도를 초과했습니다.')</script>");
 			}
-			else if(str.equals("3")) {
+			else if(fromBank.equals("Bank3")) {
 				if(bb3.transfer(Integer.parseInt(request.getParameter("bal")), fromBank, toBank))
 					out.println("<script>alert('정상처리 되었습니다.')</script>");
 					else
 					out.println("<script>alert('수용한도를 초과했습니다.')</script>");
 			}
-			else if(str.equals("4")) {
+			else if(fromBank.equals("Bank4")) {
 				if(bb4.transfer(Integer.parseInt(request.getParameter("bal")), fromBank, toBank))
 					out.println("<script>alert('정상처리 되었습니다.')</script>");
 					else
@@ -42,6 +46,10 @@
 			}
 		}
 	}
+} catch(Exception e) {
+		out.println("<script>alert('금액을 입력하세요.')</script>");
+}
+
 	bb1.getData();
 	bb2.getData();
 	bb3.getData();
@@ -85,13 +93,15 @@
 
 <form name="form1" method=POST>
 이체금액 : <input type="text" name="bal" width=200 size="5">
-<select name="Bank1">
+ from
+<select name="fromBank">
 	<option selected>Bank1</option>
 	<option>Bank2</option>
 	<option>Bank3</option>
 	<option>Bank4</option>
 </select>
-<select name="Bank2">
+ to
+ <select name="toBank">
 	<option>Bank1</option>
 	<option selected>Bank2</option>
 	<option>Bank3</option>
